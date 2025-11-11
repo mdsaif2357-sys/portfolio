@@ -23,7 +23,7 @@
         <li><a href="#home" class="nav__link active-link">Home</a></li>
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#skills" class="nav__link">Skills</a></li>
-        <li><a href="#contact" class="nav__link">Certificates</a></li>
+        <li><a href="#achievements" class="nav__link">Academic Achievements</a></li>
         <li><a href="#work" class="nav__link">Projects</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
 
@@ -120,6 +120,24 @@
       </div>
     </section>
 
+    <!-- ===== ACADEMIC ACHIEVEMENTS ===== -->
+    <section class="section" id="achievements">
+      <h2 class="section-title">Academic Achievements</h2>
+      <div class="achievements__container">
+        <div class="achievement__item">
+          <img src="high school.jpg" alt="High School Certificate" class="achievement__img">
+          <p class="achievement__text">High School Education<br>SU memorial - (2020-2021)</p>
+        </div>
+        <div class="achievement__item">
+          <img src="inter meediate.png" alt="Intermediate Certificate" class="achievement__img">
+          <p class="achievement__text">Intermediate Education<br>Harjinder nagar inter college - (2022-2023)</p>
+        </div>
+        <div class="achievement__item">
+          <img src="bca.webp" alt="BCA Certificate" class="achievement__img">
+          <p class="achievement__text">Bachelor's in Computer Applications (BCA)<br>Vision College of management - (2023-2026)</p>
+        </div>
+      </div>
+    </section>
 
     <!-- ===== WORK ===== -->
     <section class="section" id="work">
@@ -171,6 +189,7 @@
 
   <script>
     const sections = document.querySelectorAll('.home, .section');
+    const achievementItems = document.querySelectorAll('.achievement__item');
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -182,6 +201,10 @@
 
     sections.forEach(section => {
       observer.observe(section);
+    });
+
+    achievementItems.forEach(item => {
+      observer.observe(item);
     });
 
     // Mobile menu toggle
