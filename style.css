@@ -213,8 +213,9 @@ main {
 }
 
 .home__photo {
-  width: 100%;
-  max-width: 300px;
+  width: 80%;
+  max-width: 40vw;
+  min-width: 150px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 18px 48px rgba(7, 10, 20, 0.6);
@@ -286,8 +287,9 @@ main {
 }
 
 .about__img img {
-  width: 100%;
-  max-width: 300px;
+  width: 90%;
+  max-width: 35vw;
+  min-width: 150px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 18px 48px rgba(7, 10, 20, 0.6);
@@ -331,7 +333,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 300px;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .skills__data {
@@ -371,46 +373,30 @@ main {
 
 .skills__img {
   width: 100%;
+  max-width: 60vw;
   border-radius: 10px;
-  box-shadow: 0 14px 44px rgba(7, 10, 20, 0.6);
+  box-shadow: 0 18px 54px rgba(7, 10, 20, 0.7);
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 14px 44px rgba(7, 10, 20, 0.6);
+    box-shadow: 0 18px 54px rgba(7, 10, 20, 0.7);
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 20px 60px rgba(110, 231, 183, 0.4);
+    transform: scale(1.15);
+    box-shadow: 0 26px 78px rgba(110, 231, 183, 0.6);
   }
 }
 
 /* ============ ACADEMIC ACHIEVEMENTS SECTION ============ */
 .achievements__container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   justify-items: center;
   align-items: start;
-}
-
-.achievement__item:nth-child(1) {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.achievement__item:nth-child(2) {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.achievement__item:nth-child(3) {
-  grid-column: 1 / span 2;
-  grid-row: 2;
-  justify-self: center;
 }
 
 .achievement__item {
@@ -419,6 +405,8 @@ main {
   align-items: center;
   text-align: center;
   padding: 1rem 1.5rem;
+  width: 320px;
+  min-height: 380px;
   background: rgba(15, 23, 42, 0.85);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -428,6 +416,22 @@ main {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+.achievement__item:nth-child(1) {
+  grid-column: unset;
+  grid-row: unset;
+}
+
+.achievement__item:nth-child(2) {
+  grid-column: unset;
+  grid-row: unset;
+}
+
+.achievement__item:nth-child(3) {
+  grid-column: unset;
+  grid-row: unset;
+  justify-self: center;
+}
+
 .achievement__item.animate {
   opacity: 1;
   transform: translateY(0);
@@ -435,8 +439,10 @@ main {
 
 .achievement__img {
   margin-top: 35px;
-  width: 350px;
-  height: 250px;
+  width: 80%;
+  max-width: 35vw;
+  min-width: 200px;
+  aspect-ratio: 7 / 5;
   object-fit: contain;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -447,13 +453,13 @@ main {
 }
 
 .achievement__text {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   color: var(--muted);
   font-size: 1rem;
   font-weight: 500;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1.5s ease-out forwards;
+  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 /* Animation classes for certificates - similar to home image */
@@ -488,21 +494,11 @@ main {
   transition: transform 100ms ease;
 }
 
-.achievement__text {
-  margin-top: 1.2rem;
-  color: var(--muted);
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1.2s ease-out forwards;
-}
-
 /* ============ WORK SECTION ============ */
 .work__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 /* Ensure work images visible when parent section animates */
@@ -513,7 +509,8 @@ main {
 }
 
 .work__img img {
-  width: 80%;
+  width: 95%;
+  max-width: 30vw;
   border-radius: 15px;
   transition: transform 300ms ease;
   animation: float 3s ease-in-out infinite;
@@ -657,7 +654,7 @@ textarea.contact__input {
 
 @keyframes buttonFadeIn {
   to {
-    opacity: 1.2;
+    opacity: 1;
     transform: translateY(0);
   }
 }
@@ -689,8 +686,9 @@ footer {
 }
 
 /* ============ RESPONSIVE ============ */
-@media (max-width: 900px) {
+/* Enhanced media queries for mid-sized devices */
 
+@media (max-width: 1024px) {
   .home,
   .about__container,
   .skills__container {
@@ -711,9 +709,32 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .home,
+  .about__container,
+  .skills__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .achievements__container {
+    grid-template-columns: 1fr;
+  }
+
+  .work__container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact__form {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 1024px) {
   .nav__toggle {
     display: block;
+    font-size: 1.6rem;
   }
 
   .nav__list {
@@ -741,6 +762,21 @@ footer {
   .nav__link {
     font-size: 1.2rem;
   }
+}
+
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: block;
+    font-size: 1.8rem;
+  }
+
+  .nav__list {
+    padding: 1.8rem;
+  }
+
+  .nav__link {
+    font-size: 1.1rem;
+  }
 
   .home__data h1 {
     font-size: 1.8rem;
@@ -755,6 +791,73 @@ footer {
     justify-self: center;
   }
 }
+
+/* Added media query for smaller phones (max-width 480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav__logo {
+    font-size: 1.1rem;
+  }
+
+  .nav__link {
+    font-size: 1rem;
+  }
+
+  .nav__toggle {
+    font-size: 1.8rem;
+  }
+
+  .home__data h1 {
+    font-size: 1.3rem;
+  }
+
+  .home__data h3,
+  .home__data h4 {
+    font-size: 1rem;
+  }
+
+  .home__buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .home__photo {
+    max-width: 200px;
+  }
+
+  .about__container,
+  .skills__container,
+  .achievements__container,
+  .work__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Center project section items horizontally */
+  .work__container {
+    justify-items: center;
+    justify-content: center;
+  }
+
+  /* Limit the max width of work imgs for better consistency */
+  .work__img img {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .contact__form {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .contact__button {
+    width: 100%;
+  }
+}
+
 
 /* Removed debug styles for red background and borders */
 
