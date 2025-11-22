@@ -24,6 +24,7 @@
         <li><a href="#about" class="nav__link">About</a></li>
         <li><a href="#skills" class="nav__link">Skills</a></li>
         <li><a href="#achievements" class="nav__link">Academic Achievements</a></li>
+        <li><a href="#certificate" class="nav__link">Certificates</a></li>
         <li><a href="#work" class="nav__link">Projects</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
 
@@ -125,7 +126,7 @@
       <h2 class="section-title">Academic Achievements</h2>
       <div class="achievements__container">
         <div class="achievement__item">
-          <img src="high school.jpg" alt="High School Certificate" class="achievement__img">
+          <img src="inter meediate.png" alt="High School Certificate" class="achievement__img">
           <p class="achievement__text">High School Education<br>SU memorial - (2020-2021)</p>
         </div>
         <div class="achievement__item">
@@ -138,6 +139,32 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== CERTIFICATES ===== -->
+    <section class="section" id="certificate">
+      <h2 class="section-title">Certificates</h2>
+      <div class="achievements__container">
+        <div class="achievement__item">
+          <img src="certificate 1.jpg" alt="tranning Certificate" class="achievement__img animate-float">
+          <p class="achievement__text animate-fade"><u><center>🎓 Certificate of Participation — Digital Marketing & Data Analytics </u></center> <br>
+I’m delighted to share that I have successfully completed a 45-hour Professional Training Workshop on Digital Marketing & Data Analytics, organized by Edubuddy – The Future of School Management, in collaboration with the Vision Group of Institutions, Kanpur.
+
+This program provided valuable insights into digital marketing strategies, data-driven decision-making, and analytics tools, helping me build a stronger foundation in the field of digital transformation and marketing intelligence. 📊💡</p>
+        </div>
+        <div class="achievement__item">
+          <img src="certificate 2.jpg" alt="Python Certificate" class="achievement__img animate-float">
+          <p class="achievement__text animate-fade"><center><u>🎓 Workshop Completion Certificate</u> </center><br>
+I’m glad to share that I’ve successfully completed a Python Programming Workshop organized by Softpro India (Computer Technologies Pvt. Ltd.), in collaboration with Vision Institute of Technology, Kanpur.
+
+This workshop titled “A Journey from Beginner to Expert” helped me strengthen my understanding of Python fundamentals and practical implementation. Excited to apply these skills in real-world projects and continue learning! 🐍💻</p>
+        </div>
+        <div class="achievement__item">
+          <img src="certificate 3.jpg" alt="advance bca Certificate" class="achievement__img animate-float">
+          <p class="achievement__text animate-fade"><center><u>🎓 Certificate of Completion — Advanced BCA TechSkills Program </u></center>
+I’m pleased to share that I’ve successfully completed the Advanced BCA TechSkills Certification Program conducted by Vision Group of Institutions.During this program, I enhanced my technical skills through practical learning in C programming, Python, HTML, CSS, PHP, and hardware & networking. The course also strengthened my web development and soft skills, preparing me for both professional and personal growth. 💻📘
+</p>
+        </div>
+      </div>
 
     <!-- ===== WORK ===== -->
     <section class="section" id="work">
@@ -190,20 +217,28 @@
   <script>
     const sections = document.querySelectorAll('.home, .section');
     const achievementItems = document.querySelectorAll('.achievement__item');
+    const projectItems = document.querySelectorAll('.work__img');
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observerInstance) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          console.log('Animating:', entry.target.id || entry.target.className);
           entry.target.classList.add('animate');
+          // Stop observing after animation class added to prevent toggle
+          observerInstance.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
 
     sections.forEach(section => {
       observer.observe(section);
     });
 
     achievementItems.forEach(item => {
+      observer.observe(item);
+    });
+
+    projectItems.forEach(item => {
       observer.observe(item);
     });
 

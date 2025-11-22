@@ -5,7 +5,7 @@
   --accent-b: #7c3aed;
   --accent-c: #06b6d4;
   --muted: #9ba4b2;
-  --card-radius: 14px;
+  --card-radius: 14px; 
   --trans: 350ms cubic-bezier(.2, .9, .2, 1);
 }
 
@@ -418,6 +418,11 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 1rem 1.5rem;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  margin: 1rem 0;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -430,15 +435,47 @@ main {
 
 .achievement__img {
   margin-top: 35px;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 350px;
+  height: 250px;
+  object-fit: contain;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 18px 48px rgba(7, 10, 20, 0.6);
   transition: transform 300ms ease, box-shadow 300ms ease;
   animation: float 3s ease-in-out infinite;
   cursor: pointer;
+}
+
+.achievement__text {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+}
+
+/* Animation classes for certificates - similar to home image */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.achievement__item.animate .achievement__img {
+  animation: float 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.achievement__item.animate .achievement__text {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .achievement__img:hover {
@@ -452,13 +489,13 @@ main {
 }
 
 .achievement__text {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   color: var(--muted);
   font-size: 1rem;
   font-weight: 500;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease-out forwards;
+  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 /* ============ WORK SECTION ============ */
@@ -466,6 +503,13 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+/* Ensure work images visible when parent section animates */
+#work.animate .work__img img {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .work__img img {
@@ -640,7 +684,8 @@ footer {
   text-align: center;
   padding: 2rem 1rem;
   color: var(--muted);
-  border-top: 1px solid rgba(86, 47, 228, 0.05);
+  /* Removed border-top to prevent double line after contact section */
+  border-top: none;
 }
 
 /* ============ RESPONSIVE ============ */
@@ -709,4 +754,73 @@ footer {
     margin-left: 0;
     justify-self: center;
   }
+}
+
+/* Removed debug styles for red background and borders */
+
+/* Make #certificate, #work, #contact sections animate and visible on scroll */
+#contact {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin: 2rem auto;
+  max-width: 1100px;
+  padding: 4rem 2rem;
+  /* Removed bottom border to prevent double line */
+  border-bottom: none;
+  border-top: none;
+  /* remove double line below contact */
+  border-bottom-width: 0 !important;
+}
+
+#work {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin: 2rem auto;
+  max-width: 1100px;
+  padding: 4rem 2rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#certificate.animate, #work.animate, #contact.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Child elements animations inside certificate section */
+#certificate .achievement__item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#certificate.animate .achievement__item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Child elements animations inside work/projects */
+#work .work__img {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#work.animate .work__img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contact form fade in when contact section animates */
+#contact .contact__form {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#contact.animate .contact__form {
+  opacity: 1;
+  transform: translateY(0);
 }
