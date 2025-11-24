@@ -307,7 +307,7 @@ main {
   margin-bottom: 0.8rem;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease-out forwards, colorChange 3s ease-in-out infinite;
+  animation: fadeInUp 1.5s ease-out forwards, colorChange 3s ease-in-out infinite;
 }
 
 .about__text {
@@ -315,7 +315,14 @@ main {
   line-height: 1.6;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1.5s ease-out forwards, textGlow 2s ease-in-out infinite;
+  animation: fadeInUp 2s ease-out forwards, textGlow 2s ease-in-out infinite;
+}
+
+.about__text {
+  line-height: 1.6;
+  margin-bottom: 0;
+  font-weight: 400;
+  color: #e6eef8;
 }
 
 @keyframes colorChange {
